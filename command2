@@ -19,3 +19,11 @@ sudo apt install apache2 curl -y
 sudo systemctl start apache2
 curl http://127.0.0.1
 curl "http://127.0.0.1/?id=1%20OR%201=1"
+
+
+sudo apt install apache2 -y
+sudo systemctl start apache2
+sudo systemctl status apache2   # confirm it's running
+
+sudo nano /var/www/html/test.php
+alert tcp any any -> any 80 (msg:"SQL Injection Attempt"; content:"OR%201=1"; nocase; sid:1000004; rev:2;)
